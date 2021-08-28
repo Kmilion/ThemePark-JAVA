@@ -1,6 +1,8 @@
 package tierraMedia;
 
-public class Atraccion {
+import java.util.Objects;
+
+public class Atraccion implements AtraccionesYPromociones {
 
 	private String nombreAtraccion;
 	private double costoAtraccion;
@@ -17,15 +19,15 @@ public class Atraccion {
 		this.tipo = tipo;
 	}
 
-	public String getNombreAtraccion() {
+	public String getNombre() {
 		return nombreAtraccion;
 	}
 
-	public Double getCostoAtraccion() {
+	public Double getCosto() {
 		return costoAtraccion;
 	}
 
-	public double getDuracionAtraccion() {
+	public double getDuracion() {
 		return duracionAtraccion;
 	}
 
@@ -40,6 +42,26 @@ public class Atraccion {
 	@Override
 	public String toString() {
 		return nombreAtraccion;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(costoAtraccion, cupoAtraccion, duracionAtraccion, nombreAtraccion, tipo);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Atraccion other = (Atraccion) obj;
+		return Double.doubleToLongBits(costoAtraccion) == Double.doubleToLongBits(other.costoAtraccion)
+				&& cupoAtraccion == other.cupoAtraccion
+				&& Double.doubleToLongBits(duracionAtraccion) == Double.doubleToLongBits(other.duracionAtraccion)
+				&& Objects.equals(nombreAtraccion, other.nombreAtraccion) && tipo == other.tipo;
 	}
 
 }

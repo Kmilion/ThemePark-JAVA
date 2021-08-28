@@ -1,6 +1,6 @@
 package tierraMedia;
 
-public abstract class Promocion {
+public abstract class Promocion implements AtraccionesYPromociones {
 
 	private TipoAtraccion tipoPromocion;
 	private Atraccion[] atraccionesPromocion;
@@ -14,7 +14,7 @@ public abstract class Promocion {
 		this.costoTotalSinDescuento = this.calcularCostoTotalSinDescuento();
 	}
 
-	public TipoAtraccion getTipoPromocion() {
+	public TipoAtraccion getTipo() {
 		return tipoPromocion;
 	}
 
@@ -22,10 +22,9 @@ public abstract class Promocion {
 		return atraccionesPromocion;
 	}
 
-	public double getDuracionPromocion() {
+	public double getDuracion() {
 		return duracionPromocion;
 	}
-
 
 	public double getCostoTotalSinDescuento() {
 		return costoTotalSinDescuento;
@@ -34,7 +33,7 @@ public abstract class Promocion {
 	public double calcularTiempoPromocion() {
 		double tiempo = 0;
 		for (Atraccion atraccion : atraccionesPromocion) {
-			tiempo += atraccion.getDuracionAtraccion();
+			tiempo += atraccion.getDuracion();
 		}
 		return tiempo;
 	}
@@ -44,7 +43,7 @@ public abstract class Promocion {
 	public double calcularCostoTotalSinDescuento() {
 		double costo = 0;
 		for (Atraccion atraccion : atraccionesPromocion) {
-			costo += atraccion.getCostoAtraccion();
+			costo += atraccion.getCosto();
 		}
 		return costo;
 	}

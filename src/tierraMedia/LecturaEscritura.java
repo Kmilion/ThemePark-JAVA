@@ -26,9 +26,9 @@ public class LecturaEscritura {
 			ois = new ObjectInputStream(fis);
 			while (true) {
 				Atraccion p = (Atraccion) ois.readObject();
-				System.out.println("Nombre: " + p.getNombreAtraccion());
-				System.out.println("Costo: " + p.getDuracionAtraccion());
-				System.out.println("Tiempo: " + p.getCostoAtraccion());
+				System.out.println("Nombre: " + p.getNombre());
+				System.out.println("Costo: " + p.getDuracion());
+				System.out.println("Tiempo: " + p.getCosto());
 				System.out.println("*****************");
 			}
 		} catch (IOException io) {

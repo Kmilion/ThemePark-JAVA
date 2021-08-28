@@ -17,7 +17,7 @@ public class PromocionPorcentual extends Promocion {
 		return descuento;
 	}
 
-	public double getCostoPromocion() {
+	public Double getCosto() {
 		return costoPromocion;
 	}
 
@@ -37,10 +37,10 @@ public class PromocionPorcentual extends Promocion {
 
 	@Override
 	public String toString() {
-		return "Pack " + super.getTipoPromocion() + "\nAtracciones incluidas: "
+		return "Pack " + super.getTipo() + "\nAtracciones incluidas: "
 				+ Arrays.toString(super.getAtraccionesPromocion()) + "\nTiempo de duración: "
-				+ super.getDuracionPromocion() + " horas" + "\nCosto sin descuento: "
-				+ super.getCostoTotalSinDescuento() + " monedas de oro" + "\nCosto final: " + this.getCostoPromocion()
+				+ super.getDuracion() + " horas" + "\nCosto sin descuento: "
+				+ super.getCostoTotalSinDescuento() + " monedas de oro" + "\nCosto final: " + this.getCosto()
 				+ " monedas de oro";
 	}
 }
