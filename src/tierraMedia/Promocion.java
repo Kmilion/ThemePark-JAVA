@@ -4,57 +4,51 @@ import java.util.Arrays;
 
 public abstract class Promocion {
 
-	protected String nombrePromocion;
-	protected Atraccion[] atraccionesDeLaPromocion;
-	protected double costoPromocion;
-	protected double tiempoPromocion;
+	private TipoAtraccion tipoPromocion;
+	private Atraccion[] atraccionesPromocion;
+	private double duracionPromocion;
+	private double costoTotalSinDescuento;
 
-	public Promocion(String nombrePromocion, Atraccion[] atraccionesDeLaPromocion) {
-		this.nombrePromocion = nombrePromocion;
-		this.atraccionesDeLaPromocion = atraccionesDeLaPromocion;
-		this.costoPromocion = this.calcularCostoPromocion();
-		this.tiempoPromocion = this.calcularTiempoPromocion();
+	public Promocion(TipoAtraccion tipoPromocion, Atraccion[] atraccionesPromocion) {
+		this.tipoPromocion = tipoPromocion;
+		this.atraccionesPromocion = atraccionesPromocion;
+		this.duracionPromocion = this.calcularTiempoPromocion();
+		this.costoTotalSinDescuento = this.calcularCostoTotalSinDescuento();
+	}
+
+	public TipoAtraccion getTipoPromocion() {
+		return tipoPromocion;
+	}
+
+	public Atraccion[] getAtraccionesPromocion() {
+		return atraccionesPromocion;
+	}
+
+	public double getDuracionPromocion() {
+		return duracionPromocion;
+	}
+
+
+	public double getCostoTotalSinDescuento() {
+		return costoTotalSinDescuento;
+	}
+
+	public double calcularTiempoPromocion() {
+		double tiempo = 0;
+		for (Atraccion atraccion : atraccionesPromocion) {
+			tiempo += atraccion.getDuracionAtraccion();
+		}
+		return tiempo;
 	}
 
 	public abstract Double calcularCostoPromocion();
 
-	public Double calcularTiempoPromocion() {
-		double tiempoTotal = 0;
-		for (Atraccion atraccion : atraccionesDeLaPromocion) {
-			tiempoTotal += atraccion.getTiempo();
+	public double calcularCostoTotalSinDescuento() {
+		double costo = 0;
+		for (Atraccion atraccion : atraccionesPromocion) {
+			costo += atraccion.getCostoAtraccion();
 		}
-		return tiempoTotal;
+		return costo;
 	}
 
-	public double getCostoPromocion() {
-		return this.costoPromocion;
-	}
-
-	public double getTiempoPromocion() {
-		return this.tiempoPromocion;
-	}
-
-	protected double calcularCostoTotalSinDescuento() {
-		double costoTotal = 0;
-		for (Atraccion atraccion : atraccionesDeLaPromocion) {
-			costoTotal += atraccion.getCosto();
-		}
-		return costoTotal;
-	}
-
-	@Override
-	public String toString() {
-		return "Promocion: " + nombrePromocion + "\n" + "Atracciones incluidas: "
-				+ Arrays.toString(atraccionesDeLaPromocion) + "\n" + "Costo total: " + this.calcularCostoPromocion();
-	}
-	
-	public String getNombrePromocion() {
-		return nombrePromocion;
-	}
-	
-	public Atraccion[] getAtraccionesDeLaPromocion() {
-		return atraccionesDeLaPromocion;
-	}
-
-	
 }

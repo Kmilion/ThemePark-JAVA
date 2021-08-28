@@ -22,7 +22,7 @@ public class LectorAtracciones {
 					double costo = Double.parseDouble(campos[1]);
 					double tiempo = Double.parseDouble(campos[2]);
 					int cupo = Integer.parseInt(campos[3]);
-					String tipo = campos[4];
+					TipoAtraccion tipo = TipoAtraccion.valueOf(campos[4]);
 					Atraccion atraccion = new Atraccion(nombre, costo, tiempo, cupo, tipo);
 					atracciones[i] = atraccion;
 					i++;

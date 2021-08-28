@@ -12,9 +12,9 @@ public class LecturaEscritura {
 		File f = new File("datos.obj");
 		FileOutputStream fos = new FileOutputStream(f);
 		ObjectOutputStream oos = new ObjectOutputStream(fos);
-		oos.writeObject(new Atraccion("Mordor", 40, 3, 60, "Aventura"));
-		oos.writeObject(new Atraccion("Minas Tirith", 30, 3, 50, "Hola"));
-		oos.writeObject(new Atraccion("Isengard", 15, 3, 4, "Sacala"));
+		oos.writeObject(new Atraccion("Moria", 10, 2, 6, TipoAtraccion.valueOf("AVENTURA")));
+		oos.writeObject(new Atraccion("Minas Tirith", 30, 3, 50, TipoAtraccion.valueOf("PAISAJE")));
+		oos.writeObject(new Atraccion("Isengard", 15, 3, 4, TipoAtraccion.valueOf("DEGUSTACION")));
 		oos.close();
 	}
 
@@ -27,8 +27,8 @@ public class LecturaEscritura {
 			while (true) {
 				Atraccion p = (Atraccion) ois.readObject();
 				System.out.println("Nombre: " + p.getNombreAtraccion());
-				System.out.println("Costo: " + p.getTiempo());
-				System.out.println("Tiempo: " + p.getCosto());
+				System.out.println("Costo: " + p.getDuracionAtraccion());
+				System.out.println("Tiempo: " + p.getCostoAtraccion());
 				System.out.println("*****************");
 			}
 		} catch (IOException io) {

@@ -2,14 +2,27 @@ package tierraMedia;
 
 import java.util.Arrays;
 
-//Promocion Porcentual recibe un nombre, un arreglo de atracciones y un valor porcentual de descuento y devuelve el costo resultante.
 public class PromocionPorcentual extends Promocion {
 
 	private double descuento;
+	private double costoPromocion;
 
-	public PromocionPorcentual(String nombrePromocion, Atraccion[] atraccionesDeLaPromocion, double descuento) {
-		super(nombrePromocion, atraccionesDeLaPromocion);
+	public PromocionPorcentual(TipoAtraccion tipoPromocion, Atraccion[] atraccionesPromocion, double descuento) {
+		super(tipoPromocion, atraccionesPromocion);
 		setDescuento(descuento);
+		this.costoPromocion = this.calcularCostoPromocion();
+	}
+
+	public double getDescuento() {
+		return descuento;
+	}
+
+	public double getCostoPromocion() {
+		return costoPromocion;
+	}
+
+	private boolean descuentoCorrecto(double valor) {
+		return valor < 100 && valor > 0;
 	}
 
 	private void setDescuento(double descuento) {
@@ -18,21 +31,16 @@ public class PromocionPorcentual extends Promocion {
 		}
 	}
 
-	private boolean descuentoCorrecto(double valor) {
-		return valor < 100 && valor > 0;
-	}
-
-	private double getDescuento() {
-		return this.descuento;
-	}
-
 	public Double calcularCostoPromocion() {
-		return super.calcularCostoTotalSinDescuento() * (1 - this.getDescuento() / 100);
+		return super.getCostoTotalSinDescuento() * (1 - this.getDescuento() / 100);
 	}
 
 	@Override
 	public String toString() {
-		return super.getNombrePromocion() + "\nAtracciones incluidas: "+ super.getAtraccionesDeLaPromocion() + "\nLa Promo tiene un "+ this.getDescuento() +"% de descuento";
+		return "Pack " + super.getTipoPromocion() + "\nAtracciones incluidas: "
+				+ Arrays.toString(super.getAtraccionesPromocion()) + "\nTiempo de duración: "
+				+ super.getDuracionPromocion() + " horas" + "\nCosto sin descuento: "
+				+ super.getCostoTotalSinDescuento() + " monedas de oro" + "\nCosto final: " + this.getCostoPromocion()
+				+ " monedas de oro";
 	}
-
 }

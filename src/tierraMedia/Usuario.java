@@ -3,15 +3,31 @@ package tierraMedia;
 public class Usuario {
 
 	private String nombre;
-	private String tipoPreferido;
+	private TipoAtraccion tipoPreferido;
 	private double presupuesto;
 	private double tiempoDisponible;
 
-	public Usuario(String nombre, String tipoPreferido, double presupuesto, double tiempoDisponible) {
+	public Usuario(String nombre, TipoAtraccion tipoPreferido, double presupuesto, double tiempoDisponible) {
 		this.nombre = nombre;
 		this.tipoPreferido = tipoPreferido;
 		this.presupuesto = presupuesto;
 		this.tiempoDisponible = tiempoDisponible;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public TipoAtraccion getTipoPreferido() {
+		return tipoPreferido;
+	}
+
+	public double getPresupuesto() {
+		return presupuesto;
+	}
+
+	public double getTiempoDisponible() {
+		return tiempoDisponible;
 	}
 
 	@Override

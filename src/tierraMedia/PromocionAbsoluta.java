@@ -1,38 +1,48 @@
 package tierraMedia;
 
-//Promocion Absoluta recibe un nombre, un arreglo de atracciones, y un valor neto de descuento y devuelve el valor total menos el descuento.
+import java.util.Arrays;
+
 public class PromocionAbsoluta extends Promocion {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	protected double descuento;
+	private double descuento;
+	private double costoPromocion;
 
-	public PromocionAbsoluta(String nombrePromocion, Atraccion[] atraccionesDeLaPromocion, double descuento) {
-		super(nombrePromocion, atraccionesDeLaPromocion);
+	public PromocionAbsoluta(TipoAtraccion tipoPromocion, Atraccion[] atraccionesDeLaPromocion, double descuento) {
+		super(tipoPromocion, atraccionesDeLaPromocion);
 		setDescuento(descuento);
+		this.costoPromocion = this.calcularCostoPromocion();
 	}
 
 	public double getDescuento() {
 		return this.descuento;
 	}
 
-	// Error posible
-	private void setDescuento(double valor) {
+	public double getCostoPromocion() {
+		return costoPromocion;
+	}
+
+	public boolean descuentoCorrecto(double valor) {
+		return valor < super.getCostoTotalSinDescuento();
+	}
+
+	public void setDescuento(double valor) {
 		if (descuentoCorrecto(valor)) {
 			this.descuento = valor;
 		}
 	}
 
-	protected boolean descuentoCorrecto(double valor) {
-		return valor < super.calcularCostoTotalSinDescuento();
+	@Override
+	public Double calcularCostoPromocion() {
+		return super.getCostoTotalSinDescuento() - this.getDescuento();
 	}
 
 	@Override
-	public Double calcularCostoPromocion() {
-		return super.calcularCostoTotalSinDescuento() - this.getDescuento();
+	public String toString() {
+		return "Pack " + super.getTipoPromocion() + "\nAtracciones incluidas: "
+				+ Arrays.toString(super.getAtraccionesPromocion()) + "\nTiempo de duración: "
+				+ super.getDuracionPromocion() + " horas" + "\nCosto sin descuento: "
+				+ super.getCostoTotalSinDescuento() + " monedas de oro" + "\nCosto final: " + this.getCostoPromocion()
+				+ " monedas de oro";
 	}
 
-	
 }

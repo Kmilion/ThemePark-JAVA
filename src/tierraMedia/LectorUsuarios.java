@@ -18,7 +18,7 @@ public class LectorUsuarios {
 				try {
 					String[] campos = linea.split(",");
 					String nombre = campos[0];
-					String tipoPreferido = campos[1];
+					TipoAtraccion tipoPreferido = TipoAtraccion.valueOf(campos[1]);
 					double dineroDisponible = Double.parseDouble(campos[2]);
 					double tiempoDisponible = Double.parseDouble(campos[3]);
 					Usuario usuario = new Usuario(nombre, tipoPreferido, dineroDisponible, tiempoDisponible);

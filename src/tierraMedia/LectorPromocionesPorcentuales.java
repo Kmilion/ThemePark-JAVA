@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class LectorPromociones {
+public class LectorPromocionesPorcentuales {
 	public static void main(String[] args) {
 		FileReader fr = null;
 		BufferedReader br = null;
@@ -13,19 +13,20 @@ public class LectorPromociones {
 			br = new BufferedReader(fr);
 			String linea;
 			int i = 0;
-			PromocionPorcentual[] promocionesPorcentuales = new PromocionPorcentual[3];
+			PromocionPorcentual[] promocionesPorcentuales = new PromocionPorcentual[1];
 			while ((linea = br.readLine()) != null) {
 				try {
 					String[] campos = linea.split(",");
-					String nombrePromocion = campos[0];
+					TipoAtraccion tipoPromocion = TipoAtraccion.valueOf(campos[0]);
 					Double porcentajeDeDescuento = Double.parseDouble(campos[1]);
 					Atraccion[] atracciones = new Atraccion[2];
 					String nombreAtraccionA = campos[2];
 					String nombreAtraccionB = campos[3];
-					atracciones[0] = new Atraccion(nombreAtraccionA, 3, 4, 12, "Aventura");
-					atracciones[1] = new Atraccion(nombreAtraccionB, 25, 3, 4, "Aventura");
-					
-					PromocionPorcentual promocion = new PromocionPorcentual(nombrePromocion, atracciones, porcentajeDeDescuento);
+					atracciones[0] = new Atraccion(nombreAtraccionA, 3, 4, 12, tipoPromocion);
+					atracciones[1] = new Atraccion(nombreAtraccionB, 25, 3, 4, tipoPromocion);
+
+					PromocionPorcentual promocion = new PromocionPorcentual(tipoPromocion, atracciones,
+							porcentajeDeDescuento);
 					promocionesPorcentuales[i] = promocion;
 					i++;
 				} catch (NumberFormatException e) {
