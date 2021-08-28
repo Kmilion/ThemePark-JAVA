@@ -1,7 +1,5 @@
 package tierraMedia;
 
-import java.util.Arrays;
-
 public abstract class Promocion {
 
 	private TipoAtraccion tipoPromocion;
