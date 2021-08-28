@@ -39,9 +39,20 @@ public class Atraccion implements AtraccionesYPromociones {
 		return tipo;
 	}
 
+	public void restarCupo() {
+		if (this.cupoAtraccion > 0) {
+			this.cupoAtraccion--;
+		}
+	}
+
 	@Override
 	public String toString() {
 		return nombreAtraccion;
+	}
+
+	public String getDatos() {
+		return "Nombre: " + nombreAtraccion + "\nTipo: " + tipo + "\nCosto: " + costoAtraccion + " monedas de oro"
+				+ "\nDuración: " + duracionAtraccion + " horas";
 	}
 
 	@Override

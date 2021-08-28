@@ -3,18 +3,18 @@ package tierraMedia;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class SistemaGestion {
 
-	public static Usuario[] getUsuarios() {
+	public static ArrayList<Usuario> getUsuarios() {
 		FileReader fr = null;
 		BufferedReader br = null;
-		Usuario[] usuarios = new Usuario[4];
+		ArrayList<Usuario> listaUsuarios = new ArrayList<Usuario>();
 		try {
 			fr = new FileReader("usuarios.txt");
 			br = new BufferedReader(fr);
 			String linea;
-			int i = 0;
 			while ((linea = br.readLine()) != null) {
 				try {
 					String[] campos = linea.split(",");
@@ -23,31 +23,29 @@ public class SistemaGestion {
 					double dineroDisponible = Double.parseDouble(campos[2]);
 					double tiempoDisponible = Double.parseDouble(campos[3]);
 					Usuario usuario = new Usuario(nombre, tipoPreferido, dineroDisponible, tiempoDisponible);
-					usuarios[i] = usuario;
-					i++;
+					listaUsuarios.add(usuario);
 				} catch (NumberFormatException e) {
 					System.out.println("Uno de los datos leidos no es un double");
 				}
 			}
-			for (int j = 0; j < usuarios.length; j++) {
-				System.out.println(usuarios[j].toString());
+			for (Usuario usuario : listaUsuarios) {
+				System.out.println(usuario.getDatos());
 				System.out.println("-------------------------");
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return usuarios;
+		return listaUsuarios;
 	}
 
-	public static Atraccion[] getAtracciones() {
+	public static ArrayList<Atraccion> getAtracciones() {
 		FileReader fr = null;
 		BufferedReader br = null;
-		Atraccion[] atracciones = new Atraccion[8];
+		ArrayList<Atraccion> listaAtracciones = new ArrayList<Atraccion>();
 		try {
 			fr = new FileReader("atracciones.txt");
 			br = new BufferedReader(fr);
 			String linea;
-			int i = 0;
 			while ((linea = br.readLine()) != null) {
 				try {
 					String[] campos = linea.split(",");
@@ -57,31 +55,29 @@ public class SistemaGestion {
 					int cupo = Integer.parseInt(campos[3]);
 					TipoAtraccion tipo = TipoAtraccion.valueOf(campos[4]);
 					Atraccion atraccion = new Atraccion(nombre, costo, tiempo, cupo, tipo);
-					atracciones[i] = atraccion;
-					i++;
+					listaAtracciones.add(atraccion);
 				} catch (NumberFormatException e) {
 					System.out.println("Uno de los datos leidos no es un double");
 				}
 			}
-			for (int j = 0; j < atracciones.length; j++) {
-				System.out.println(atracciones[j].toString());
+			for (Atraccion atraccion : listaAtracciones) {
+				System.out.println(atraccion.getDatos());
 				System.out.println("-------------------------");
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return atracciones;
+		return listaAtracciones;
 	}
 
-	public static PromocionPorcentual[] getPromocionesPorcentuales() {
+	public static ArrayList<PromocionPorcentual> getPromocionesPorcentuales() {
 		FileReader fr = null;
 		BufferedReader br = null;
-		PromocionPorcentual[] promocionesPorcentuales = new PromocionPorcentual[1];
+		ArrayList<PromocionPorcentual> listaPromocionesPorcentuales = new ArrayList<PromocionPorcentual>();
 		try {
 			fr = new FileReader("promocionesPorcentuales.txt");
 			br = new BufferedReader(fr);
 			String linea;
-			int i = 0;
 			while ((linea = br.readLine()) != null) {
 				try {
 					String[] campos = linea.split(",");
@@ -95,31 +91,29 @@ public class SistemaGestion {
 
 					PromocionPorcentual promocion = new PromocionPorcentual(tipoPromocion, atracciones,
 							porcentajeDeDescuento);
-					promocionesPorcentuales[i] = promocion;
-					i++;
+					listaPromocionesPorcentuales.add(promocion);
 				} catch (NumberFormatException e) {
 					System.out.println("Uno de los datos leidos no es un double");
 				}
 			}
-			for (int j = 0; j < promocionesPorcentuales.length; j++) {
-				System.out.println(promocionesPorcentuales[j].toString());
+			for (PromocionPorcentual promocion : listaPromocionesPorcentuales) {
+				System.out.println(promocion.toString());
 				System.out.println("-------------------------");
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return promocionesPorcentuales;
+		return listaPromocionesPorcentuales;
 	}
 
-	public static PromocionAbsoluta[] getPromocionesAbsolutas() {
+	public static ArrayList<PromocionAbsoluta> getPromocionesAbsolutas() {
 		FileReader fr = null;
 		BufferedReader br = null;
-		PromocionAbsoluta[] promocionesAbsolutas = new PromocionAbsoluta[1];
+		ArrayList<PromocionAbsoluta> listaPromocionesAbsolutas = new ArrayList<PromocionAbsoluta>();
 		try {
 			fr = new FileReader("promocionesAbsolutas.txt");
 			br = new BufferedReader(fr);
 			String linea;
-			int i = 0;
 			while ((linea = br.readLine()) != null) {
 				try {
 					String[] campos = linea.split(",");
@@ -133,31 +127,29 @@ public class SistemaGestion {
 
 					PromocionAbsoluta promocion = new PromocionAbsoluta(tipoPromocion, atracciones,
 							porcentajeDeDescuento);
-					promocionesAbsolutas[i] = promocion;
-					i++;
+					listaPromocionesAbsolutas.add(promocion);
 				} catch (NumberFormatException e) {
 					System.out.println("Uno de los datos leidos no es un double");
 				}
 			}
-			for (int j = 0; j < promocionesAbsolutas.length; j++) {
-				System.out.println(promocionesAbsolutas[j].toString());
+			for (PromocionAbsoluta promocion : listaPromocionesAbsolutas) {
+				System.out.println(promocion.toString());
 				System.out.println("-------------------------");
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return promocionesAbsolutas;
+		return listaPromocionesAbsolutas;
 	}
 
-	public static PromocionAxB[] getPromocionesAxB() {
+	public static ArrayList<PromocionAxB> getPromocionesAxB() {
 		FileReader fr = null;
 		BufferedReader br = null;
-		PromocionAxB[] promocionesAxB = new PromocionAxB[1];
+		ArrayList<PromocionAxB> listaPromocionesAxB = new ArrayList<PromocionAxB>();
 		try {
 			fr = new FileReader("promocionesAxB.txt");
 			br = new BufferedReader(fr);
 			String linea;
-			int i = 0;
 			while ((linea = br.readLine()) != null) {
 				try {
 					String[] campos = linea.split(",");
@@ -171,20 +163,19 @@ public class SistemaGestion {
 					atracciones[2] = new Atraccion(nombreAtraccionC, 12, 3, 32, tipoPromocion);
 
 					PromocionAxB promocion = new PromocionAxB(tipoPromocion, atracciones);
-					promocionesAxB[i] = promocion;
-					i++;
+					listaPromocionesAxB.add(promocion);
 				} catch (NumberFormatException e) {
 					System.out.println("Uno de los datos leidos no es un double");
 				}
 			}
-			for (int j = 0; j < promocionesAxB.length; j++) {
-				System.out.println(promocionesAxB[j].toString());
+			for (PromocionAxB promocion : listaPromocionesAxB) {
+				System.out.println(promocion.toString());
 				System.out.println("-------------------------");
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return promocionesAxB;
+		return listaPromocionesAxB;
 	}
 
 	public static void main(String[] args) {

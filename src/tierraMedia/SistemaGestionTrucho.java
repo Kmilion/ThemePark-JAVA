@@ -18,6 +18,25 @@ public class SistemaGestionTrucho {
 		Usuario sam = new Usuario("Sam", TipoAtraccion.DEGUSTACION, 36, 8);
 		Usuario galadriel = new Usuario("Sam", TipoAtraccion.PAISAJE, 120, 6);
 
+		Atraccion[] atraccionPA = new Atraccion[2];
+		atraccionPA[0] = bosqueNegro;
+		atraccionPA[1] = mordor;
+		
+		Atraccion[] atraccionPP = new Atraccion[2];
+		atraccionPP[0] = lothlorien;
+		atraccionPP[1] = laComarca;
+		
+		Atraccion[] atraccionPAxB = new Atraccion[3];
+		atraccionPAxB[0] = minasTirith;
+		atraccionPAxB[1] = abismoDeHelm;
+		atraccionPAxB[2] = erebor;
+
+		PromocionAbsoluta pA = new PromocionAbsoluta(TipoAtraccion.AVENTURA, atraccionPA, 20);
+		PromocionPorcentual pP = new PromocionPorcentual(TipoAtraccion.DEGUSTACION, atraccionPP, 2);
+		PromocionAxB pAxB = new PromocionAxB(TipoAtraccion.PAISAJE, atraccionPAxB);
+		
+		moria.restarCupo();
+		System.out.println(moria.getCupoAtraccion());
 	}
 
 }

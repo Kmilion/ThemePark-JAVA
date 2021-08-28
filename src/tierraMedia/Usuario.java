@@ -6,6 +6,7 @@ public class Usuario {
 	private TipoAtraccion tipoPreferido;
 	private double presupuesto;
 	private double tiempoDisponible;
+	private Atraccion[] atraccionesCompradas;
 
 	public Usuario(String nombre, TipoAtraccion tipoPreferido, double presupuesto, double tiempoDisponible) {
 		this.nombreUsuario = nombre;
@@ -30,8 +31,7 @@ public class Usuario {
 		return tiempoDisponible;
 	}
 
-	@Override
-	public String toString() {
+	public String getDatos() {
 		return "Nombre: " + nombreUsuario + "\nPrefiere las atracciones del tipo: " + tipoPreferido + "\nDispone de: "
 				+ presupuesto + " monedas de oro\nDispone de: " + tiempoDisponible + " horas";
 	}
