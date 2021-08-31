@@ -1,11 +1,11 @@
 package tierraMedia;
 
-public interface AtraccionesYPromociones {
+public interface Comercializable {
 
 	TipoAtraccion getTipo();
 
 	double getDuracion();
 
-	Double getCosto();
+	int getCosto();
 
 }

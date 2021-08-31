@@ -5,7 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class SistemaGestion {
+public class ParqueTest {
 
 	public static ArrayList<Usuario> getUsuarios() {
 		FileReader fr = null;
@@ -20,7 +20,7 @@ public class SistemaGestion {
 					String[] campos = linea.split(",");
 					String nombre = campos[0];
 					TipoAtraccion tipoPreferido = TipoAtraccion.valueOf(campos[1]);
-					double dineroDisponible = Double.parseDouble(campos[2]);
+					int dineroDisponible = Integer.parseInt(campos[2]);
 					double tiempoDisponible = Double.parseDouble(campos[3]);
 					Usuario usuario = new Usuario(nombre, tipoPreferido, dineroDisponible, tiempoDisponible);
 					listaUsuarios.add(usuario);
@@ -50,7 +50,7 @@ public class SistemaGestion {
 				try {
 					String[] campos = linea.split(",");
 					String nombre = campos[0];
-					double costo = Double.parseDouble(campos[1]);
+					int costo = Integer.parseInt(campos[1]);
 					double tiempo = Double.parseDouble(campos[2]);
 					int cupo = Integer.parseInt(campos[3]);
 					TipoAtraccion tipo = TipoAtraccion.valueOf(campos[4]);
@@ -83,11 +83,11 @@ public class SistemaGestion {
 					String[] campos = linea.split(",");
 					TipoAtraccion tipoPromocion = TipoAtraccion.valueOf(campos[0]);
 					Double porcentajeDeDescuento = Double.parseDouble(campos[1]);
-					Atraccion[] atracciones = new Atraccion[2];
+					ArrayList<Atraccion> atracciones = new ArrayList<Atraccion>();
 					String nombreAtraccionA = campos[2];
 					String nombreAtraccionB = campos[3];
-					atracciones[0] = new Atraccion(nombreAtraccionA, 3, 4, 12, tipoPromocion);
-					atracciones[1] = new Atraccion(nombreAtraccionB, 25, 3, 4, tipoPromocion);
+					atracciones.add(new Atraccion(nombreAtraccionA, 3, 4, 12, tipoPromocion));
+					atracciones.add(new Atraccion(nombreAtraccionB, 25, 3, 4, tipoPromocion));
 
 					PromocionPorcentual promocion = new PromocionPorcentual(tipoPromocion, atracciones,
 							porcentajeDeDescuento);
@@ -97,7 +97,7 @@ public class SistemaGestion {
 				}
 			}
 			for (PromocionPorcentual promocion : listaPromocionesPorcentuales) {
-				System.out.println(promocion.toString());
+				System.out.println(promocion.getDatos());
 				System.out.println("-------------------------");
 			}
 		} catch (IOException e) {
@@ -118,12 +118,12 @@ public class SistemaGestion {
 				try {
 					String[] campos = linea.split(",");
 					TipoAtraccion tipoPromocion = TipoAtraccion.valueOf(campos[0]);
-					Double porcentajeDeDescuento = Double.parseDouble(campos[1]);
-					Atraccion[] atracciones = new Atraccion[2];
+					int porcentajeDeDescuento = Integer.parseInt(campos[1]);
+					ArrayList<Atraccion> atracciones = new ArrayList<Atraccion>();
 					String nombreAtraccionA = campos[2];
 					String nombreAtraccionB = campos[3];
-					atracciones[0] = new Atraccion(nombreAtraccionA, 3, 6.5, 150, tipoPromocion);
-					atracciones[1] = new Atraccion(nombreAtraccionB, 35, 1, 30, tipoPromocion);
+					atracciones.add(new Atraccion(nombreAtraccionA, 3, 6.5, 150, tipoPromocion));
+					atracciones.add(new Atraccion(nombreAtraccionB, 35, 1, 30, tipoPromocion));
 
 					PromocionAbsoluta promocion = new PromocionAbsoluta(tipoPromocion, atracciones,
 							porcentajeDeDescuento);
@@ -133,7 +133,7 @@ public class SistemaGestion {
 				}
 			}
 			for (PromocionAbsoluta promocion : listaPromocionesAbsolutas) {
-				System.out.println(promocion.toString());
+				System.out.println(promocion.getDatos());
 				System.out.println("-------------------------");
 			}
 		} catch (IOException e) {
@@ -154,13 +154,13 @@ public class SistemaGestion {
 				try {
 					String[] campos = linea.split(",");
 					TipoAtraccion tipoPromocion = TipoAtraccion.valueOf(campos[0]);
-					Atraccion[] atracciones = new Atraccion[3];
+					ArrayList<Atraccion> atracciones = new ArrayList<Atraccion>();
 					String nombreAtraccionA = campos[1];
 					String nombreAtraccionB = campos[2];
 					String nombreAtraccionC = campos[3];
-					atracciones[0] = new Atraccion(nombreAtraccionA, 5, 2.5, 25, tipoPromocion);
-					atracciones[1] = new Atraccion(nombreAtraccionB, 5, 2, 15, tipoPromocion);
-					atracciones[2] = new Atraccion(nombreAtraccionC, 12, 3, 32, tipoPromocion);
+					atracciones.add(new Atraccion(nombreAtraccionA, 5, 2.5, 25, tipoPromocion));
+					atracciones.add(new Atraccion(nombreAtraccionB, 5, 2, 15, tipoPromocion));
+					atracciones.add(new Atraccion(nombreAtraccionC, 12, 3, 32, tipoPromocion));
 
 					PromocionAxB promocion = new PromocionAxB(tipoPromocion, atracciones);
 					listaPromocionesAxB.add(promocion);
@@ -169,7 +169,7 @@ public class SistemaGestion {
 				}
 			}
 			for (PromocionAxB promocion : listaPromocionesAxB) {
-				System.out.println(promocion.toString());
+				System.out.println(promocion.getDatos());
 				System.out.println("-------------------------");
 			}
 		} catch (IOException e) {

@@ -1,33 +1,31 @@
 package tierraMedia;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 
 public class PromocionAxB extends Promocion {
 
-	private double costoPromocion;
+	private int costoPromocion;
 
-	public PromocionAxB(TipoAtraccion tipoPromocion, Atraccion[] atraccionesDeLaPromocion) {
+	public PromocionAxB(TipoAtraccion tipoPromocion, ArrayList<Atraccion> atraccionesDeLaPromocion) {
 		super(tipoPromocion, atraccionesDeLaPromocion);
 		this.costoPromocion = this.calcularCostoPromocion();
 	}
 
-	public Double calcularCostoPromocion() {
-		int ultimaPosicion = super.getAtraccionesPromocion().length - 1;
-		Atraccion ultimaAtraccion = super.getAtraccionesPromocion()[ultimaPosicion];
-		return super.getCostoTotalSinDescuento() - ultimaAtraccion.getCosto();
-	}
-
-	public Double getCosto() {
-		return costoPromocion;
+	public int calcularCostoPromocion() {
+		int ultimaCoordenada = super.getAtraccionesPromocion().size() - 1;
+		Atraccion ultimaAtraccion = super.getAtraccionesPromocion().get(ultimaCoordenada);
+		return (int) (super.getCostoTotalSinDescuento() - ultimaAtraccion.getCosto());
 	}
 
 	@Override
-	public String toString() {
-		return "Pack " + super.getTipo() + "\nAtracciones incluidas: "
-				+ Arrays.toString(super.getAtraccionesPromocion()) + "\nTiempo de duración: "
-				+ super.getDuracion() + " horas" + "\nCosto sin descuento: "
+	public int getCosto() {
+		return costoPromocion;
+	}
+
+	public String getDatos() {
+		return "Pack " + super.getTipo() + "\nAtracciones incluidas: " + super.getAtraccionesPromocion()
+				+ "\nTiempo de duración: " + super.getDuracion() + " horas" + "\nCosto sin descuento: "
 				+ super.getCostoTotalSinDescuento() + " monedas de oro" + "\nCosto final: " + this.getCosto()
 				+ " monedas de oro";
 	}
-
 }

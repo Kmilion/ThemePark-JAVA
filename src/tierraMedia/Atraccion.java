@@ -1,16 +1,14 @@
 package tierraMedia;
 
-import java.util.Objects;
-
-public class Atraccion implements AtraccionesYPromociones {
+public class Atraccion implements Comercializable {
 
 	private String nombreAtraccion;
-	private double costoAtraccion;
+	private int costoAtraccion;
 	private double duracionAtraccion;
 	private int cupoAtraccion;
 	private TipoAtraccion tipo;
 
-	public Atraccion(String nombreAtraccion, double costoAtraccion, double duracionAtraccion, int cupoAtraccion,
+	public Atraccion(String nombreAtraccion, int costoAtraccion, double duracionAtraccion, int cupoAtraccion,
 			TipoAtraccion tipo) {
 		this.nombreAtraccion = nombreAtraccion;
 		this.costoAtraccion = costoAtraccion;
@@ -23,7 +21,7 @@ public class Atraccion implements AtraccionesYPromociones {
 		return nombreAtraccion;
 	}
 
-	public Double getCosto() {
+	public int getCosto() {
 		return costoAtraccion;
 	}
 
@@ -39,40 +37,19 @@ public class Atraccion implements AtraccionesYPromociones {
 		return tipo;
 	}
 
-	public void restarCupo() {
-		if (this.cupoAtraccion > 0) {
-			this.cupoAtraccion--;
-		}
+	public boolean tieneCupo() {
+		return this.cupoAtraccion > 0;
 	}
 
-	@Override
-	public String toString() {
-		return nombreAtraccion;
+	public void restarCupo() {
+		if (this.tieneCupo()) {
+			this.cupoAtraccion--;
+		}
 	}
 
 	public String getDatos() {
 		return "Nombre: " + nombreAtraccion + "\nTipo: " + tipo + "\nCosto: " + costoAtraccion + " monedas de oro"
 				+ "\nDuración: " + duracionAtraccion + " horas";
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(costoAtraccion, cupoAtraccion, duracionAtraccion, nombreAtraccion, tipo);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Atraccion other = (Atraccion) obj;
-		return Double.doubleToLongBits(costoAtraccion) == Double.doubleToLongBits(other.costoAtraccion)
-				&& cupoAtraccion == other.cupoAtraccion
-				&& Double.doubleToLongBits(duracionAtraccion) == Double.doubleToLongBits(other.duracionAtraccion)
-				&& Objects.equals(nombreAtraccion, other.nombreAtraccion) && tipo == other.tipo;
 	}
 
 }

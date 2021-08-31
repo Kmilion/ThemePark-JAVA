@@ -19,7 +19,7 @@ public class LectorAtracciones {
 				try {
 					String[] campos = linea.split(",");
 					String nombre = campos[0];
-					double costo = Double.parseDouble(campos[1]);
+					int costo = Integer.parseInt(campos[1]);
 					double tiempo = Double.parseDouble(campos[2]);
 					int cupo = Integer.parseInt(campos[3]);
 					TipoAtraccion tipo = TipoAtraccion.valueOf(campos[4]);

@@ -2,14 +2,14 @@ package tierraMedia;
 
 import java.util.ArrayList;
 
-public abstract class Promocion implements AtraccionesYPromociones {
+public abstract class Promocion implements Comercializable {
 
 	private TipoAtraccion tipoPromocion;
-	private Atraccion[] atraccionesPromocion;
+	private ArrayList<Atraccion> atraccionesPromocion;
 	private double duracionPromocion;
-	private double costoTotalSinDescuento;
+	private int costoTotalSinDescuento;
 
-	public Promocion(TipoAtraccion tipoPromocion, Atraccion[] atracciones) {
+	public Promocion(TipoAtraccion tipoPromocion, ArrayList<Atraccion> atracciones) {
 		this.tipoPromocion = tipoPromocion;
 		this.atraccionesPromocion = atracciones;
 		this.duracionPromocion = this.calcularTiempoPromocion();
@@ -20,7 +20,7 @@ public abstract class Promocion implements AtraccionesYPromociones {
 		return tipoPromocion;
 	}
 
-	public Atraccion[] getAtraccionesPromocion() {
+	public ArrayList<Atraccion> getAtraccionesPromocion() {
 		return atraccionesPromocion;
 	}
 
@@ -28,7 +28,7 @@ public abstract class Promocion implements AtraccionesYPromociones {
 		return duracionPromocion;
 	}
 
-	public double getCostoTotalSinDescuento() {
+	public int getCostoTotalSinDescuento() {
 		return costoTotalSinDescuento;
 	}
 
@@ -40,14 +40,16 @@ public abstract class Promocion implements AtraccionesYPromociones {
 		return tiempo;
 	}
 
-	public abstract Double calcularCostoPromocion();
-
-	public double calcularCostoTotalSinDescuento() {
-		double costo = 0;
+	public int calcularCostoTotalSinDescuento() {
+		int costo = 0;
 		for (Atraccion atraccion : atraccionesPromocion) {
 			costo += atraccion.getCosto();
 		}
 		return costo;
 	}
+
+	public abstract int calcularCostoPromocion();
+
+	public abstract int getCosto();
 
 }
