@@ -38,12 +38,12 @@ public class Usuario {
 		return atraccionesCompradas;
 	}
 
-	public void restarTiempo(Comercializable oferta) {
-		this.tiempoDisponible -= oferta.getDuracion();
+	public void restarTiempo(Sugerencia sugerencia) {
+		this.tiempoDisponible -= sugerencia.getDuracion();
 	}
 
-	public void restarDinero(Comercializable oferta) {
-		this.dineroDisponible -= oferta.getCosto();
+	public void restarDinero(Sugerencia sugerencia) {
+		this.dineroDisponible -= sugerencia.getCosto();
 	}
 
 	public void comprar(Promocion oferta) {

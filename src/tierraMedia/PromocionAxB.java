@@ -17,15 +17,15 @@ public class PromocionAxB extends Promocion {
 		return (int) (super.getCostoTotalSinDescuento() - ultimaAtraccion.getCosto());
 	}
 
-	@Override
-	public int getCosto() {
-		return costoPromocion;
-	}
-
 	public String getDatos() {
 		return "Pack " + super.getTipo() + "\nAtracciones incluidas: " + super.getAtraccionesPromocion()
 				+ "\nTiempo de duración: " + super.getDuracion() + " horas" + "\nCosto sin descuento: "
 				+ super.getCostoTotalSinDescuento() + " monedas de oro" + "\nCosto final: " + this.getCosto()
 				+ " monedas de oro";
+	}
+
+	@Override
+	public Integer getCosto() {
+		return this.costoPromocion;
 	}
 }

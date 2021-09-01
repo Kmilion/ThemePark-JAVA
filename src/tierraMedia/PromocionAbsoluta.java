@@ -34,8 +34,8 @@ public class PromocionAbsoluta extends Promocion {
 	}
 
 	@Override
-	public int getCosto() {
-		return costoPromocion;
+	public Integer getCosto() {
+		return this.costoPromocion;
 	}
 
 	public String getDatos() {

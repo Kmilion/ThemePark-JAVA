@@ -1,8 +1,9 @@
 package tierraMedia;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
-public abstract class Promocion implements Comercializable {
+public abstract class Promocion implements Sugerencia, Comparable<Promocion> {
 
 	private TipoAtraccion tipoPromocion;
 	private ArrayList<Atraccion> atraccionesPromocion;
@@ -24,7 +25,7 @@ public abstract class Promocion implements Comercializable {
 		return atraccionesPromocion;
 	}
 
-	public double getDuracion() {
+	public Double getDuracion() {
 		return duracionPromocion;
 	}
 
@@ -47,9 +48,47 @@ public abstract class Promocion implements Comercializable {
 		}
 		return costo;
 	}
+	
+	public boolean hayCupo() {
+		for (Atraccion a : this.atraccionesPromocion) {
+			if (!a.hayCupo()) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(atraccionesPromocion, costoTotalSinDescuento, duracionPromocion, tipoPromocion);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Promocion other = (Promocion) obj;
+		return Objects.equals(atraccionesPromocion, other.atraccionesPromocion)
+				&& costoTotalSinDescuento == other.costoTotalSinDescuento
+				&& Double.doubleToLongBits(duracionPromocion) == Double.doubleToLongBits(other.duracionPromocion)
+				&& tipoPromocion == other.tipoPromocion;
+	}
 
 	public abstract int calcularCostoPromocion();
 
-	public abstract int getCosto();
+	public abstract Integer getCosto();
 
+	public abstract String getDatos();
+
+	@Override
+	public int compareTo(Promocion o) {
+		if (this.getCosto().compareTo(o.getCosto()) == 0) {
+			return this.getDuracion().compareTo(o.getDuracion());
+		}
+		return this.getCosto().compareTo(o.getCosto());
+	}
 }

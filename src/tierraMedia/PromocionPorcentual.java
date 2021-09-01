@@ -31,15 +31,16 @@ public class PromocionPorcentual extends Promocion {
 		return (int) Math.round(super.getCostoTotalSinDescuento() * (1 - this.getDescuento() / 100));
 	}
 
-	@Override
-	public int getCosto() {
-		return costoPromocion;
-	}
 
 	public String getDatos() {
 		return "Pack " + super.getTipo() + "\nAtracciones incluidas: " + super.getAtraccionesPromocion()
 				+ "\nTiempo de duración: " + super.getDuracion() + " horas" + "\nCosto sin descuento: "
 				+ super.getCostoTotalSinDescuento() + " monedas de oro" + "\nCosto final: " + this.getCosto()
 				+ " monedas de oro";
+	}
+
+	@Override
+	public Integer getCosto() {
+		return this.costoPromocion;
 	}
 }

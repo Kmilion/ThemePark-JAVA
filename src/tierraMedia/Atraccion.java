@@ -1,6 +1,9 @@
 package tierraMedia;
 
-public class Atraccion implements Comercializable {
+import java.util.ArrayList;
+import java.util.Objects;
+
+public class Atraccion implements Sugerencia, Comparable<Atraccion> {
 
 	private String nombreAtraccion;
 	private int costoAtraccion;
@@ -21,11 +24,11 @@ public class Atraccion implements Comercializable {
 		return nombreAtraccion;
 	}
 
-	public int getCosto() {
+	public Integer getCosto() {
 		return costoAtraccion;
 	}
 
-	public double getDuracion() {
+	public Double getDuracion() {
 		return duracionAtraccion;
 	}
 
@@ -37,12 +40,12 @@ public class Atraccion implements Comercializable {
 		return tipo;
 	}
 
-	public boolean tieneCupo() {
+	public boolean hayCupo() {
 		return this.cupoAtraccion > 0;
 	}
 
 	public void restarCupo() {
-		if (this.tieneCupo()) {
+		if (this.hayCupo()) {
 			this.cupoAtraccion--;
 		}
 	}
@@ -50,6 +53,42 @@ public class Atraccion implements Comercializable {
 	public String getDatos() {
 		return "Nombre: " + nombreAtraccion + "\nTipo: " + tipo + "\nCosto: " + costoAtraccion + " monedas de oro"
 				+ "\nDuración: " + duracionAtraccion + " horas";
+	}
+
+	@Override
+	public ArrayList<Atraccion> getAtraccionesPromocion() {
+		ArrayList<Atraccion> atracciones = new ArrayList<Atraccion>();
+		atracciones.add(this);
+		return atracciones;
+	}
+	
+	
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(costoAtraccion, cupoAtraccion, duracionAtraccion, nombreAtraccion, tipo);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Atraccion other = (Atraccion) obj;
+		return costoAtraccion == other.costoAtraccion && cupoAtraccion == other.cupoAtraccion
+				&& Double.doubleToLongBits(duracionAtraccion) == Double.doubleToLongBits(other.duracionAtraccion)
+				&& Objects.equals(nombreAtraccion, other.nombreAtraccion) && tipo == other.tipo;
+	}
+
+	@Override
+	public int compareTo(Atraccion o) {
+		if (this.getCosto().compareTo(o.getCosto()) == 0) {
+			return this.getDuracion().compareTo(o.getDuracion());
+		}
+		return this.getCosto().compareTo(o.getCosto());
 	}
 
 }
