@@ -32,8 +32,7 @@ public class Tester {
 				double tiempoDisponible = Double.parseDouble(campos[3]);
 				Usuario usuario = new Usuario(nombre, tipoPreferido, dineroDisponible, tiempoDisponible);
 
-				if (!usuarios.contains(usuario))
-					usuarios.add(usuario);
+				usuarios.add(usuario);
 			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -61,8 +60,7 @@ public class Tester {
 				TipoAtraccion tipo = TipoAtraccion.valueOf(campos[4]);
 				Atraccion atraccion = new Atraccion(nombre, costo, tiempo, cupo, tipo);
 
-				if (!atracciones.contains(atraccion))
-					atracciones.add(atraccion);
+				atracciones.add(atraccion);
 			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -91,8 +89,7 @@ public class Tester {
 				atracciones.add(new Atraccion(nombreAtraccionA, 3, 4, 12, tipoPromocion));
 				atracciones.add(new Atraccion(nombreAtraccionB, 25, 3, 4, tipoPromocion));
 
-				PromocionPorcentual promocion = new PromocionPorcentual(tipoPromocion, atracciones,
-						porcentajeDeDescuento);
+				Promocion promocion = new PromocionPorcentual(tipoPromocion, atracciones, porcentajeDeDescuento);
 
 				promocionesPorcentuales.add(promocion);
 			}
@@ -123,7 +120,7 @@ public class Tester {
 				atracciones.add(new Atraccion(nombreAtraccionA, 35, 1, 30, tipoPromocion));
 				atracciones.add(new Atraccion(nombreAtraccionB, 3, 6.5, 150, tipoPromocion));
 
-				PromocionAbsoluta promocion = new PromocionAbsoluta(tipoPromocion, atracciones, descuentoNeto);
+				Promocion promocion = new PromocionAbsoluta(tipoPromocion, atracciones, descuentoNeto);
 
 				promocionesAbsolutas.add(promocion);
 			}
@@ -155,7 +152,7 @@ public class Tester {
 				atracciones.add(new Atraccion(nombreAtraccionB, 5, 2, 15, tipoPromocion));
 				atracciones.add(new Atraccion(nombreAtraccionC, 12, 3, 32, tipoPromocion));
 
-				PromocionAxB promocion = new PromocionAxB(tipoPromocion, atracciones);
+				Promocion promocion = new PromocionAxB(tipoPromocion, atracciones);
 				promocionesAxB.add(promocion);
 			}
 		} catch (FileNotFoundException e) {
@@ -165,7 +162,6 @@ public class Tester {
 
 		return promocionesAxB;
 	}
-	
 
 	public static void main(String[] args) throws IOException {
 

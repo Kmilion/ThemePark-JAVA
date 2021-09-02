@@ -6,8 +6,8 @@ Precio final: 10 monedas de oro
 Tiempo aproximado: 2.0 horas
 
 Nombre: Gandalf
-Atracciones adquiridas: Erebor, Abismo de Helm
-Precio final: 17 monedas de oro
+Atracciones adquiridas: Harad, Lothlorien
+Precio final: 85 monedas de oro
 Tiempo aproximado: 5.0 horas
 
 Nombre: Sam
@@ -16,7 +16,47 @@ Precio final: 38 monedas de oro
 Tiempo aproximado: 7.5 horas
 
 Nombre: Galadriel
-Atracciones adquiridas: Erebor, Minas Tirith
-Precio final: 17 monedas de oro
-Tiempo aproximado: 5.5 horas
+Atracciones adquiridas: Harad, Rhun
+Precio final: 83 monedas de oro
+Tiempo aproximado: 6.0 horas
+
+Nombre: Frodo
+Atracciones adquiridas: Bosque Negro, Mordor, Lothlorien
+Precio final: 63 monedas de oro
+Tiempo aproximado: 8.0 horas
+
+Nombre: Sauron
+Atracciones adquiridas: Mar de Rhun, Minas Tirith
+Precio final: 29 monedas de oro
+Tiempo aproximado: 3.5 horas
+
+Nombre: Merry
+Atracciones adquiridas: El usuario no pudo comprar ninguna atracción
+Precio final: 0 monedas de oro
+Tiempo aproximado: 0.0 horas
+
+Nombre: Pippin
+Atracciones adquiridas: Harad
+Precio final: 50 monedas de oro
+Tiempo aproximado: 4.0 horas
+
+Nombre: Ragnar
+Atracciones adquiridas: Lothlorien, Mar de Rhun, Moria
+Precio final: 69 monedas de oro
+Tiempo aproximado: 4.0 horas
+
+Nombre: Aragorn
+Atracciones adquiridas: Minas Tirith
+Precio final: 5 monedas de oro
+Tiempo aproximado: 2.5 horas
+
+Nombre: Boromir
+Atracciones adquiridas: Mordor, Lothlorien
+Precio final: 60 monedas de oro
+Tiempo aproximado: 4.0 horas
+
+Nombre: Gondor
+Atracciones adquiridas: Mar de Rhun
+Precio final: 24 monedas de oro
+Tiempo aproximado: 1.0 horas
 

@@ -62,6 +62,8 @@ public class Atraccion implements Sugerencia, Comparable<Atraccion> {
 		return atracciones;
 	}
 
+
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(costo, cupo, duracion, nombre, tipo);

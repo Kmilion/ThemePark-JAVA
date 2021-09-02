@@ -132,8 +132,12 @@ public class ParqueTierraMedia {
 			salida.println("Nombre: " + u.getNombre());
 			salida.print("Atracciones adquiridas: ");
 			String s = "";
-			for (Atraccion a : u.getAtraccionesCompradas()) {
-				s += a.getNombre() + ", ";
+			if (!u.getAtraccionesCompradas().isEmpty()) {
+				for (Atraccion a : u.getAtraccionesCompradas()) {
+					s += a.getNombre() + ", ";
+				}
+			} else {
+				s += "El usuario no pudo comprar ninguna atracción, ";
 			}
 			s = s.substring(0, s.length() - 2);
 			salida.println(s);
