@@ -5,35 +5,35 @@ import java.util.Objects;
 
 public class Atraccion implements Sugerencia, Comparable<Atraccion> {
 
-	private String nombreAtraccion;
-	private int costoAtraccion;
-	private double duracionAtraccion;
-	private int cupoAtraccion;
+	private String nombre;
+	private int costo;
+	private double duracion;
+	private int cupo;
 	private TipoAtraccion tipo;
 
 	public Atraccion(String nombreAtraccion, int costoAtraccion, double duracionAtraccion, int cupoAtraccion,
 			TipoAtraccion tipo) {
-		this.nombreAtraccion = nombreAtraccion;
-		this.costoAtraccion = costoAtraccion;
-		this.duracionAtraccion = duracionAtraccion;
-		this.cupoAtraccion = cupoAtraccion;
+		this.nombre = nombreAtraccion;
+		this.costo = costoAtraccion;
+		this.duracion = duracionAtraccion;
+		this.cupo = cupoAtraccion;
 		this.tipo = tipo;
 	}
 
 	public String getNombre() {
-		return nombreAtraccion;
+		return nombre;
 	}
 
 	public Integer getCosto() {
-		return costoAtraccion;
+		return costo;
 	}
 
 	public Double getDuracion() {
-		return duracionAtraccion;
+		return duracion;
 	}
 
 	public int getCupoAtraccion() {
-		return cupoAtraccion;
+		return cupo;
 	}
 
 	public TipoAtraccion getTipo() {
@@ -41,18 +41,18 @@ public class Atraccion implements Sugerencia, Comparable<Atraccion> {
 	}
 
 	public boolean hayCupo() {
-		return this.cupoAtraccion > 0;
+		return this.cupo > 0;
 	}
 
 	public void restarCupo() {
 		if (this.hayCupo()) {
-			this.cupoAtraccion--;
+			this.cupo--;
 		}
 	}
 
 	public String getDatos() {
-		return "Nombre: " + nombreAtraccion + "\nTipo: " + tipo + "\nCosto: " + costoAtraccion + " monedas de oro"
-				+ "\nDuración: " + duracionAtraccion + " horas";
+		return "Nombre: " + nombre + "\nTipo: " + tipo + "\nCosto: " + costo + " monedas de oro" + "\nDuración: "
+				+ duracion + " horas" + "\nCupo: " + cupo;
 	}
 
 	@Override
@@ -61,12 +61,10 @@ public class Atraccion implements Sugerencia, Comparable<Atraccion> {
 		atracciones.add(this);
 		return atracciones;
 	}
-	
-	
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(costoAtraccion, cupoAtraccion, duracionAtraccion, nombreAtraccion, tipo);
+		return Objects.hash(costo, cupo, duracion, nombre, tipo);
 	}
 
 	@Override
@@ -78,17 +76,17 @@ public class Atraccion implements Sugerencia, Comparable<Atraccion> {
 		if (getClass() != obj.getClass())
 			return false;
 		Atraccion other = (Atraccion) obj;
-		return costoAtraccion == other.costoAtraccion && cupoAtraccion == other.cupoAtraccion
-				&& Double.doubleToLongBits(duracionAtraccion) == Double.doubleToLongBits(other.duracionAtraccion)
-				&& Objects.equals(nombreAtraccion, other.nombreAtraccion) && tipo == other.tipo;
+		return costo == other.costo && cupo == other.cupo
+				&& Double.doubleToLongBits(duracion) == Double.doubleToLongBits(other.duracion)
+				&& Objects.equals(nombre, other.nombre) && tipo == other.tipo;
 	}
 
 	@Override
-	public int compareTo(Atraccion o) {
-		if (this.getCosto().compareTo(o.getCosto()) == 0) {
-			return this.getDuracion().compareTo(o.getDuracion());
+	public int compareTo(Atraccion otraAtraccion) {
+		if (this.getCosto().compareTo(otraAtraccion.getCosto()) == 0) {
+			return this.getDuracion().compareTo(otraAtraccion.getDuracion());
 		}
-		return this.getCosto().compareTo(o.getCosto());
+		return this.getCosto().compareTo(otraAtraccion.getCosto());
 	}
 
 }

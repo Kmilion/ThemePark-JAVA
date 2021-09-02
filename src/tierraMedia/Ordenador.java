@@ -4,6 +4,10 @@ import java.util.Comparator;
 
 public class Ordenador implements Comparator<Sugerencia> {
 
+	/*
+	 * @getClass() devuelve el objeto Class que representa la clase en tiempo de
+	 * ejecución de un objeto.
+	 */
 	@Override
 	public int compare(Sugerencia s1, Sugerencia s2) {
 		if (s1.getClass() == s2.getClass()) {
@@ -23,7 +27,7 @@ public class Ordenador implements Comparator<Sugerencia> {
 
 	public int compare2(Sugerencia s1, Sugerencia s2) {
 		if (s1.getCosto().compareTo(s2.getCosto()) == 0) {
-			return s1.getDuracion().compareTo(s2.getDuracion());
+			return s1.getDuracion().compareTo(s2.getDuracion()) * -1;
 		}
 		return s1.getCosto().compareTo(s2.getCosto()) * -1;
 	}

@@ -4,14 +4,14 @@ import java.util.ArrayList;
 
 public class Usuario {
 
-	private String nombreUsuario;
+	private String nombre;
 	private TipoAtraccion tipoPreferido;
 	private int dineroDisponible;
 	private double tiempoDisponible;
 	private ArrayList<Atraccion> atraccionesCompradas;
 
 	public Usuario(String nombre, TipoAtraccion tipoPreferido, int dineroDisponible, double tiempoDisponible) {
-		this.nombreUsuario = nombre;
+		this.nombre = nombre;
 		this.tipoPreferido = tipoPreferido;
 		this.dineroDisponible = dineroDisponible;
 		this.tiempoDisponible = tiempoDisponible;
@@ -19,7 +19,7 @@ public class Usuario {
 	}
 
 	public String getNombre() {
-		return nombreUsuario;
+		return nombre;
 	}
 
 	public TipoAtraccion getTipoPreferido() {
@@ -46,7 +46,7 @@ public class Usuario {
 		this.dineroDisponible -= sugerencia.getCosto();
 	}
 
-	public void comprar(Promocion oferta) {
+	public void comprar(Sugerencia oferta) {
 		for (Atraccion atraccion : oferta.getAtraccionesPromocion()) {
 			this.atraccionesCompradas.add(atraccion);
 			atraccion.restarCupo();
@@ -55,16 +55,9 @@ public class Usuario {
 		this.restarDinero(oferta);
 	}
 
-	public void comprar(Atraccion oferta) {
-		this.atraccionesCompradas.add(oferta);
-		oferta.restarCupo();
-		this.restarDinero(oferta);
-		this.restarTiempo(oferta);
-	}
-
 	public String getDatos() {
-		return "Nombre: " + nombreUsuario + "\nPrefiere las atracciones del tipo: " + tipoPreferido + "\nDispone de: "
-				+ dineroDisponible + " monedas de oro\nDispone de: " + tiempoDisponible + " horas";
+		return "Nombre: " + nombre + "\nTipo preferido: " + tipoPreferido + "\nDinero disponible: "
+				+ dineroDisponible + " monedas de oro\nTiempo disponible: " + tiempoDisponible + " horas";
 	}
 
 }

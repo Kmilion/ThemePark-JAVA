@@ -1,0 +1,22 @@
+*******Resumen de las compras realizadas*******
+
+Nombre: Eowyn
+Atracciones adquiridas: Moria
+Precio final: 10 monedas de oro
+Tiempo aproximado: 2.0 horas
+
+Nombre: Gandalf
+Atracciones adquiridas: Erebor, Abismo de Helm
+Precio final: 17 monedas de oro
+Tiempo aproximado: 5.0 horas
+
+Nombre: Sam
+Atracciones adquiridas: La Comarca, Lothlorien
+Precio final: 38 monedas de oro
+Tiempo aproximado: 7.5 horas
+
+Nombre: Galadriel
+Atracciones adquiridas: Erebor, Minas Tirith
+Precio final: 17 monedas de oro
+Tiempo aproximado: 5.5 horas
+
