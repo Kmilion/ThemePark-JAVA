@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class Tester {
 
-	public static void iniciarParque(ParqueTierraMedia p) throws IOException {
+	public static void iniciarParque(Parque p) throws IOException {
 
 		System.out.println("Bievenido a " + p.getNombre() + "!");
 		p.sugerir();
@@ -165,7 +165,7 @@ public class Tester {
 
 	public static void main(String[] args) throws IOException {
 
-		ParqueTierraMedia superpark = new ParqueTierraMedia("Parque de Atracciones de la Tierra Media");
+		Parque superpark = new Parque("Parque de Atracciones de la Tierra Media");
 
 		ArrayList<Usuario> usuarios = getUsuarios("usuarios.txt");
 		superpark.addUsuario(usuarios);

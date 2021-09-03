@@ -6,14 +6,14 @@ public interface Sugerencia {
 
 	TipoAtraccion getTipo();
 
+	Integer getCosto();
+
 	Double getDuracion();
 
-	Integer getCosto();
-	
 	ArrayList<Atraccion> getAtraccionesPromocion();
-	
-	String getDatos();
-	
+
 	boolean hayCupo();
+
+	String getDatos();
 
 }

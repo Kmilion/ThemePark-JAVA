@@ -44,5 +44,4 @@ public class PromocionAbsoluta extends Promocion {
 				+ super.getCostoTotalSinDescuento() + " monedas de oro" + "\nCosto final: " + this.getCosto()
 				+ " monedas de oro";
 	}
-
 }

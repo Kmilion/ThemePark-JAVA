@@ -7,34 +7,34 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
-public class ParqueTierraMedia {
+public class Parque {
 
-	private ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
-	private ArrayList<Sugerencia> sugerencias = new ArrayList<Sugerencia>();
-	private String nombre;
+	private ArrayList<Usuario> usuariosParque = new ArrayList<Usuario>();
+	private ArrayList<Sugerencia> sugerenciasParque = new ArrayList<Sugerencia>();
+	private String nombreParque;
 
-	public ParqueTierraMedia(String nombre) {
-		this.nombre = nombre;
+	public Parque(String nombre) {
+		this.nombreParque = nombre;
 	}
 
 	public String getNombre() {
-		return nombre;
+		return nombreParque;
 	}
 
 	public void addUsuario(ArrayList<Usuario> usuarios) {
-		this.usuarios = usuarios;
+		this.usuariosParque = usuarios;
 	}
 
 	public void addSugerencia(ArrayList<Sugerencia> sugerencias) {
 		for (Sugerencia s : sugerencias) {
-			this.sugerencias.add(s);
+			this.sugerenciasParque.add(s);
 		}
 	}
 
 	public void sugerir() throws IOException {
-		OrdenarAtracciones(this.sugerencias);
-		for (Usuario u : this.usuarios) {
-			for (Sugerencia s : this.sugerencias) {
+		OrdenarAtracciones(this.sugerenciasParque);
+		for (Usuario u : this.usuariosParque) {
+			for (Sugerencia s : this.sugerenciasParque) {
 				if (s.getTipo() == u.getTipoPreferido() && s.getCosto() <= u.getDineroDisponible()
 						&& s.getDuracion() <= u.getTiempoDisponible() && !contieneAtraccion1(u, s)
 						&& !contieneAtraccion2(u, s) && s.hayCupo()) {
@@ -43,9 +43,10 @@ public class ParqueTierraMedia {
 					System.out.println(s.getDatos());
 					System.out.println("Desea aceptar la sugerencia? s/n");
 					System.out.println("-------------------");
+					@SuppressWarnings("resource")
 					Scanner in = new Scanner(System.in);
 					Character caracter = in.next().charAt(0);
-					caracter = caracter.toLowerCase(caracter);
+					caracter = Character.toLowerCase(caracter);
 					try {
 						if (caracter == 's') {
 							u.comprar(s);
@@ -58,7 +59,7 @@ public class ParqueTierraMedia {
 					}
 				}
 			}
-			for (Sugerencia s : this.sugerencias) {
+			for (Sugerencia s : this.sugerenciasParque) {
 				if (s.getTipo() != u.getTipoPreferido() && s.getCosto() <= u.getDineroDisponible()
 						&& s.getDuracion() <= u.getTiempoDisponible() && !contieneAtraccion1(u, s)
 						&& !contieneAtraccion2(u, s) && s.hayCupo()) {
@@ -67,9 +68,10 @@ public class ParqueTierraMedia {
 					System.out.println(s.getDatos());
 					System.out.println("Desea aceptar la sugerencia? s/n");
 					System.out.println("-------------------");
+					@SuppressWarnings("resource")
 					Scanner in = new Scanner(System.in);
 					Character caracter = in.next().charAt(0);
-					caracter = caracter.toLowerCase(caracter);
+					caracter = Character.toLowerCase(caracter);
 					try {
 						if (caracter == 's') {
 							u.comprar(s);
@@ -85,7 +87,7 @@ public class ParqueTierraMedia {
 
 		System.out.println("Resumen de los usuarios y sus atracciones: ");
 
-		for (Usuario u : this.usuarios) {
+		for (Usuario u : this.usuariosParque) {
 			System.out.println(u.getDatos());
 			System.out.println("Atracciones en su itinerario: ");
 			for (Atraccion a : u.getAtraccionesCompradas()) {
@@ -96,14 +98,14 @@ public class ParqueTierraMedia {
 
 		System.out.println("Estado final de las atracciones:");
 
-		for (Sugerencia a : this.sugerencias) {
+		for (Sugerencia a : this.sugerenciasParque) {
 			if (a instanceof Atraccion) {
 				System.out.println(a.getDatos());
 				System.out.println("----------------");
 			}
 		}
 
-		escribirUsuarios("Final.txt", this.usuarios);
+		escribirUsuarios("Final.txt", this.usuariosParque);
 	}
 
 	public static int calcularCostoTotal(ArrayList<Atraccion> atracciones) {
