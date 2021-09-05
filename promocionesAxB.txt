@@ -1,3 +1,3 @@
-Promo A,DEGUSTACION,Forodwaith,La Comarca,Lothlorien
-Promo B,DEGUSTACION,Mar de Rhun,Sindarin
-Promo C,DEGUSTACION,Forodwaith,Lothlorien,Sindarin
+Sabores del Fuego,DEGUSTACION,Forodwaith,La Comarca,Lothlorien
+Guisados Vivos,DEGUSTACION,Mar de Rhun,Sindarin
+Lagos Profundos,PAISAJE,Abismo de Helm,Harad

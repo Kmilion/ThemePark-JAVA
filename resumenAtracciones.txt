@@ -4,34 +4,34 @@ Harad
 Cupos restantes: 2
 -----------------
 Lothlorien
-Cupos restantes: 26
+Cupos restantes: 28
 -----------------
 Gondor
 Cupos restantes: 20
 -----------------
 Mordor
-Cupos restantes: 2
+Cupos restantes: 4
 -----------------
 Forodwaith
 Cupos restantes: 20
 -----------------
 Mar de Rhun
-Cupos restantes: 96
+Cupos restantes: 97
 -----------------
 Sindarin
 Cupos restantes: 3
 -----------------
 Montanias Blancas
-Cupos restantes: 19
+Cupos restantes: 20
 -----------------
 Erebor
-Cupos restantes: 31
+Cupos restantes: 32
 -----------------
 Moria
 Cupos restantes: 5
 -----------------
 Lim Claro
-Cupos restantes: 15
+Cupos restantes: 12
 -----------------
 Minas Tirith
 Cupos restantes: 24
@@ -43,5 +43,5 @@ La Comarca
 Cupos restantes: 150
 -----------------
 Bosque Negro
-Cupos restantes: 12
+Cupos restantes: 9
 -----------------

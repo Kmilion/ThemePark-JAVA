@@ -1,3 +1,4 @@
-Promo A,PAISAJE,40,Minas Tirith,Gondor,Erebor
-Promo B,PAISAJE,30,Abismo de Helm,Harad
-Promo C,PAISAJE,20,Erebor,Harad,Gondor
+Grandes Condados,PAISAJE,10,Erebor,Harad,Gondor
+Espadas de Ultratumba,AVENTURA,40,Lim Claro,Bosque Negro
+Dulzura Medieval,DEGUSTACION,30,Forodwaith,Lothlorien,Sindarin
+Bosques Bajos,PAISAJE,20,Erebor,Harad,Gondor

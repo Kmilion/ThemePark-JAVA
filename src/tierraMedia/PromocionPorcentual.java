@@ -41,7 +41,7 @@ public class PromocionPorcentual extends Promocion {
 
 	/* Calcula el costo de la Promocion con el descuento aplicado. */
 	public int calcularCostoPromocion() {
-		return Math.round(super.getCostoTotalSinDescuento() * (1 - this.getDescuento() / 100));
+		return (int) (super.calcularCostoTotalSinDescuento() * (100 - this.getDescuento()) / 100);
 	}
 
 	/*
@@ -56,7 +56,7 @@ public class PromocionPorcentual extends Promocion {
 	/* Devuelve en formato String los datos de la Promocion. */
 	public String getDatos() {
 		return super.getNombre() + "\nTipo: " + super.getTipo() + "\nAtracciones incluidas: "
-				+ super.getNombreAtracciones() + "\nCosto: " + this.getCosto() + " monedas de oro" + "\nDuración: "
+				+ super.getNombreAtracciones() + "\nCosto: " + getCosto() + " monedas de oro" + "\nDuración: "
 				+ super.getDuracion() + " horas";
 	}
 }
