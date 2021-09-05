@@ -121,7 +121,9 @@ public class Parque {
 				}
 			}
 			escribirUsuario(u);
-		}System.out.print("******** Fin del servicio ********");
+		}
+		escribirAtracciones(sugerenciasParque);
+		System.out.print("******** Fin del servicio ********");
 	}
 
 	public static void escribirUsuario(Usuario u) throws FileNotFoundException {
@@ -142,6 +144,20 @@ public class Parque {
 		} else {
 			s += "El usuario no pudo comprar ninguna atracción.";
 			salida.print(s);
+		}
+		salida.close();
+	}
+
+	public static void escribirAtracciones(ArrayList<Sugerencia> sugerencias) throws FileNotFoundException {
+		PrintWriter salida = new PrintWriter("resumenAtracciones.txt");
+
+		salida.println("*******Resumen de las atracciones del día*******\n");
+		for (Sugerencia a : sugerencias) {
+			if (a instanceof Atraccion) {
+				salida.println(a.getNombre());
+				salida.println("Cupos restantes: " + ((Atraccion) a).getCupoAtraccion());
+				salida.println("-----------------");
+			}
 		}
 		salida.close();
 	}

@@ -1,0 +1,47 @@
+*******Resumen de las atracciones del día*******
+
+Harad
+Cupos restantes: 2
+-----------------
+Lothlorien
+Cupos restantes: 26
+-----------------
+Gondor
+Cupos restantes: 20
+-----------------
+Mordor
+Cupos restantes: 2
+-----------------
+Forodwaith
+Cupos restantes: 20
+-----------------
+Mar de Rhun
+Cupos restantes: 96
+-----------------
+Sindarin
+Cupos restantes: 3
+-----------------
+Montanias Blancas
+Cupos restantes: 19
+-----------------
+Erebor
+Cupos restantes: 31
+-----------------
+Moria
+Cupos restantes: 5
+-----------------
+Lim Claro
+Cupos restantes: 15
+-----------------
+Minas Tirith
+Cupos restantes: 24
+-----------------
+Abismo de Helm
+Cupos restantes: 12
+-----------------
+La Comarca
+Cupos restantes: 150
+-----------------
+Bosque Negro
+Cupos restantes: 12
+-----------------
