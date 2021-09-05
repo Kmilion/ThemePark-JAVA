@@ -1,1 +1,3 @@
-PAISAJE,Minas Tirith,Abismo de Helm,Erebor
+Promo A,DEGUSTACION,Forodwaith,La Comarca,Lothlorien
+Promo B,DEGUSTACION,Mar de Rhun,Sindarin
+Promo C,DEGUSTACION,Forodwaith,Lothlorien,Sindarin

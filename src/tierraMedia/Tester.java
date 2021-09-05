@@ -10,7 +10,7 @@ public class Tester {
 
 	public static void iniciarParque(Parque p) throws IOException {
 
-		System.out.println("Bievenido a " + p.getNombre() + "!");
+		System.out.println("******** Bievenido a " + p.getNombre() + " ********");
 		p.sugerir();
 
 	}
@@ -42,24 +42,33 @@ public class Tester {
 		return usuarios;
 	}
 
-	private static ArrayList<Sugerencia> getAtracciones(String archivo) {
-		ArrayList<Sugerencia> atracciones = new ArrayList<Sugerencia>();
+	private static ArrayList<Sugerencia> getSugerencias(String archivoAtracciones, String PromoP, String PromoA,
+			String PromoAxB) {
+		ArrayList<Sugerencia> sugerencias = new ArrayList<Sugerencia>();
+		ArrayList<Atraccion> atracciones = new ArrayList<Atraccion>();
+		ArrayList<Promocion> promocionesPorcentuales = new ArrayList<Promocion>();
+		ArrayList<Promocion> promocionesAbsolutas = new ArrayList<Promocion>();
+		ArrayList<Promocion> promocionesAxB = new ArrayList<Promocion>();
+
 		Scanner sc = null;
 		try {
-			sc = new Scanner(new File(archivo));
+			sc = new Scanner(new File(archivoAtracciones));
 
 			while (sc.hasNext()) {
 
 				String linea = sc.nextLine();
 				String campos[] = linea.split(",");
+				ArrayList<String> datos = new ArrayList<String>();
+				for (String s : campos) {
+					datos.add(s);
+				}
+				String nombre = datos.get(0);
+				int costo = Integer.parseInt(datos.get(1));
+				double tiempo = Double.parseDouble(datos.get(2));
+				int cupo = Integer.parseInt(datos.get(3));
+				TipoAtraccion tipo = TipoAtraccion.valueOf(datos.get(4));
 
-				String nombre = campos[0];
-				int costo = Integer.parseInt(campos[1]);
-				double tiempo = Double.parseDouble(campos[2]);
-				int cupo = Integer.parseInt(campos[3]);
-				TipoAtraccion tipo = TipoAtraccion.valueOf(campos[4]);
 				Atraccion atraccion = new Atraccion(nombre, costo, tiempo, cupo, tipo);
-
 				atracciones.add(atraccion);
 			}
 		} catch (FileNotFoundException e) {
@@ -67,100 +76,115 @@ public class Tester {
 		}
 		sc.close();
 
-		return atracciones;
-	}
-
-	private static ArrayList<Sugerencia> getPromocionesPorcentuales(String archivo) {
-		ArrayList<Sugerencia> promocionesPorcentuales = new ArrayList<Sugerencia>();
-		Scanner sc = null;
+		Scanner scA = null;
 		try {
-			sc = new Scanner(new File(archivo));
+			scA = new Scanner(new File(PromoP));
 
-			while (sc.hasNext()) {
+			while (scA.hasNext()) {
 
-				String linea = sc.nextLine();
+				String linea = scA.nextLine();
 				String campos[] = linea.split(",");
-
-				TipoAtraccion tipoPromocion = TipoAtraccion.valueOf(campos[0]);
-				Double porcentajeDeDescuento = Double.parseDouble(campos[1]);
-				ArrayList<Atraccion> atracciones = new ArrayList<Atraccion>();
-				String nombreAtraccionA = campos[2];
-				String nombreAtraccionB = campos[3];
-				atracciones.add(new Atraccion(nombreAtraccionA, 3, 4, 12, tipoPromocion));
-				atracciones.add(new Atraccion(nombreAtraccionB, 25, 3, 4, tipoPromocion));
-
-				Promocion promocion = new PromocionPorcentual(tipoPromocion, atracciones, porcentajeDeDescuento);
-
+				ArrayList<String> datos = new ArrayList<String>();
+				for (String s : campos) {
+					datos.add(s);
+				}
+				String nombrePromocion = datos.get(0);
+				TipoAtraccion tipoPromocion = TipoAtraccion.valueOf(datos.get(1));
+				Integer porcentajeDeDescuento = Integer.parseInt(datos.get(2));
+				ArrayList<Atraccion> atraccionesPromo = new ArrayList<Atraccion>();
+				for (int i = 3; i < datos.size(); i++) {
+					for (Atraccion s : atracciones) {
+						if (datos.get(i).equals(s.getNombre())) {
+							atraccionesPromo.add(s);
+						}
+					}
+				}
+				Promocion promocion = new PromocionPorcentual(nombrePromocion, tipoPromocion, atraccionesPromo,
+						porcentajeDeDescuento);
 				promocionesPorcentuales.add(promocion);
 			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		sc.close();
+		scA.close();
 
-		return promocionesPorcentuales;
-	}
-
-	private static ArrayList<Sugerencia> getPromocionesAbsolutas(String archivo) {
-		ArrayList<Sugerencia> promocionesAbsolutas = new ArrayList<Sugerencia>();
-		Scanner sc = null;
+		Scanner scB = null;
 		try {
-			sc = new Scanner(new File(archivo));
+			scB = new Scanner(new File(PromoA));
 
-			while (sc.hasNext()) {
+			while (scB.hasNext()) {
 
-				String linea = sc.nextLine();
+				String linea = scB.nextLine();
 				String campos[] = linea.split(",");
-
-				TipoAtraccion tipoPromocion = TipoAtraccion.valueOf(campos[0]);
-				Integer descuentoNeto = Integer.parseInt(campos[1]);
-				ArrayList<Atraccion> atracciones = new ArrayList<Atraccion>();
-				String nombreAtraccionA = campos[2];
-				String nombreAtraccionB = campos[3];
-				atracciones.add(new Atraccion(nombreAtraccionA, 35, 1, 30, tipoPromocion));
-				atracciones.add(new Atraccion(nombreAtraccionB, 3, 6.5, 150, tipoPromocion));
-
-				Promocion promocion = new PromocionAbsoluta(tipoPromocion, atracciones, descuentoNeto);
-
+				ArrayList<String> datos = new ArrayList<String>();
+				for (String s : campos) {
+					datos.add(s);
+				}
+				String nombrePromocion = datos.get(0);
+				TipoAtraccion tipoPromocion = TipoAtraccion.valueOf(datos.get(1));
+				Integer descuentoNeto = Integer.parseInt(datos.get(2));
+				ArrayList<Atraccion> atraccionesPromo = new ArrayList<Atraccion>();
+				for (int i = 3; i < datos.size(); i++) {
+					for (Atraccion s : atracciones) {
+						if (datos.get(i).equals(s.getNombre())) {
+							atraccionesPromo.add(s);
+						}
+					}
+				}
+				Promocion promocion = new PromocionAbsoluta(nombrePromocion, tipoPromocion, atraccionesPromo,
+						descuentoNeto);
 				promocionesAbsolutas.add(promocion);
 			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		sc.close();
+		scB.close();
 
-		return promocionesAbsolutas;
-	}
-
-	private static ArrayList<Sugerencia> getPromocionesAxB(String archivo) {
-		ArrayList<Sugerencia> promocionesAxB = new ArrayList<Sugerencia>();
-		Scanner sc = null;
+		Scanner scC = null;
 		try {
-			sc = new Scanner(new File(archivo));
+			scC = new Scanner(new File(PromoAxB));
 
-			while (sc.hasNext()) {
+			while (scC.hasNext()) {
 
-				String linea = sc.nextLine();
+				String linea = scC.nextLine();
 				String campos[] = linea.split(",");
-
-				TipoAtraccion tipoPromocion = TipoAtraccion.valueOf(campos[0]);
-				ArrayList<Atraccion> atracciones = new ArrayList<Atraccion>();
-				String nombreAtraccionA = campos[1];
-				String nombreAtraccionB = campos[2];
-				String nombreAtraccionC = campos[3];
-				atracciones.add(new Atraccion(nombreAtraccionA, 5, 2.5, 25, tipoPromocion));
-				atracciones.add(new Atraccion(nombreAtraccionB, 5, 2, 15, tipoPromocion));
-				atracciones.add(new Atraccion(nombreAtraccionC, 12, 3, 32, tipoPromocion));
-
-				Promocion promocion = new PromocionAxB(tipoPromocion, atracciones);
+				ArrayList<String> datos = new ArrayList<String>();
+				for (String s : campos) {
+					datos.add(s);
+				}
+				String nombrePromocion = datos.get(0);
+				TipoAtraccion tipoPromocion = TipoAtraccion.valueOf(datos.get(1));
+				ArrayList<Atraccion> atraccionesPromo = new ArrayList<Atraccion>();
+				for (int i = 2; i < datos.size(); i++) {
+					for (Atraccion s : atracciones) {
+						if (datos.get(i).equals(s.getNombre())) {
+							atraccionesPromo.add(s);
+						}
+					}
+				}
+				Promocion promocion = new PromocionAxB(nombrePromocion, tipoPromocion, atraccionesPromo);
 				promocionesAxB.add(promocion);
 			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		sc.close();
+		scC.close();
 
-		return promocionesAxB;
+		for (Atraccion a : atracciones) {
+			sugerencias.add(a);
+		}
+		for (Promocion p : promocionesPorcentuales) {
+			sugerencias.add(p);
+		}
+		for (Promocion p : promocionesAbsolutas) {
+			sugerencias.add(p);
+		}
+		for (Promocion p : promocionesAxB) {
+			sugerencias.add(p);
+		}
+
+		return sugerencias;
+
 	}
 
 	public static void main(String[] args) throws IOException {
@@ -170,16 +194,9 @@ public class Tester {
 		ArrayList<Usuario> usuarios = getUsuarios("usuarios.txt");
 		superpark.addUsuario(usuarios);
 
-		ArrayList<Sugerencia> atracciones = getAtracciones("atracciones.txt");
-
-		ArrayList<Sugerencia> promocionesPorcentuales = getPromocionesPorcentuales("promocionesPorcentuales.txt");
-		ArrayList<Sugerencia> promocionesAbsolutas = getPromocionesAbsolutas("promocionesAbsolutas.txt");
-		ArrayList<Sugerencia> promocionesAxB = getPromocionesAxB("promocionesAxB.txt");
-
-		superpark.addSugerencia(atracciones);
-		superpark.addSugerencia(promocionesPorcentuales);
-		superpark.addSugerencia(promocionesAbsolutas);
-		superpark.addSugerencia(promocionesAxB);
+		ArrayList<Sugerencia> sugerencias = getSugerencias("atracciones.txt", "promocionesPorcentuales.txt",
+				"promocionesAbsolutas.txt", "promocionesAxB.txt");
+		superpark.addSugerencia(sugerencias);
 
 		iniciarParque(superpark);
 	}

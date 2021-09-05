@@ -6,17 +6,24 @@ import java.util.Objects;
 public abstract class Promocion implements Sugerencia, Comparable<Promocion> {
 
 	/* Atributos de la clase abstracta Promocion. */
+	private String nombrePromo;
 	private TipoAtraccion tipoPromocion;
 	private ArrayList<Atraccion> atraccionesPromocion;
 	private double duracionPromocion;
 	private int costoTotalSinDescuento;
 
 	/* Constructor de promocion, solo se usa para inicializar los atributos. */
-	public Promocion(TipoAtraccion tipoPromocion, ArrayList<Atraccion> atracciones) {
+	public Promocion(String nombrePromo, TipoAtraccion tipoPromocion, ArrayList<Atraccion> atracciones) {
+		this.nombrePromo = nombrePromo;
 		this.tipoPromocion = tipoPromocion;
 		this.atraccionesPromocion = atracciones;
 		this.duracionPromocion = this.calcularTiempoPromocion();
 		this.costoTotalSinDescuento = this.calcularCostoTotalSinDescuento();
+	}
+
+	/* Devuelve el nombre de la Atraccion. */
+	public String getNombre() {
+		return nombrePromo;
 	}
 
 	/* Devuelve el tipo de la Promocion. */
@@ -68,6 +75,18 @@ public abstract class Promocion implements Sugerencia, Comparable<Promocion> {
 			}
 		}
 		return true;
+	}
+
+	/*
+	 * Devuelve un arreglo con los nombres de las Atraccion que uso para que cuando
+	 * tengo que imprimir las Atraccion incluidas en una Promocion.
+	 */
+	public ArrayList<String> getNombreAtracciones() {
+		ArrayList<String> nombres = new ArrayList<String>();
+		for (Atraccion a : this.atraccionesPromocion) {
+			nombres.add(a.getNombre());
+		}
+		return nombres;
 	}
 
 	/*

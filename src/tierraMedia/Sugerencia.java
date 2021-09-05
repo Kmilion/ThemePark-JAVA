@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 public interface Sugerencia {
 
+	String getNombre();
+
 	TipoAtraccion getTipo();
 
 	Integer getCosto();

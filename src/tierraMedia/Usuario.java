@@ -10,6 +10,8 @@ public class Usuario {
 	private int dineroDisponible;
 	private double tiempoDisponible;
 	private ArrayList<Atraccion> atraccionesCompradas;
+	private int dineroInicial;
+	private double tiempoInicial;
 
 	/* Constructor de un Usuario simple. */
 	public Usuario(String nombre, TipoAtraccion tipoPreferido, int dineroDisponible, double tiempoDisponible) {
@@ -18,6 +20,8 @@ public class Usuario {
 		this.dineroDisponible = dineroDisponible;
 		this.tiempoDisponible = tiempoDisponible;
 		this.atraccionesCompradas = new ArrayList<Atraccion>();
+		this.dineroInicial = dineroDisponible;
+		this.tiempoInicial = tiempoDisponible;
 	}
 
 	/* Devuelve el nombre del Usuario. */
@@ -77,10 +81,17 @@ public class Usuario {
 		this.restarDinero(oferta);
 	}
 
+	public int getDineroGastado() {
+		return this.dineroInicial - this.dineroDisponible;
+	}
+
+	public double getTiempoGastado() {
+		return this.tiempoInicial - this.tiempoDisponible;
+	}
+
 	/* Devuelve los datos del Usuario en formato String. */
 	public String getDatos() {
 		return "Nombre: " + nombre + "\nTipo preferido: " + tipoPreferido + "\nDinero disponible: " + dineroDisponible
 				+ " monedas de oro\nTiempo disponible: " + tiempoDisponible + " horas";
 	}
-
 }

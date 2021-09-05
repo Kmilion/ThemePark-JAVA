@@ -1,1 +1,3 @@
-DEGUSTACION,2,La Comarca,Lothlorien
+Promo A,PAISAJE,10,Minas Tirith,Gondor,Erebor
+Promo B,PAISAJE,10,Abismo de Helm,Harad
+Promo C,PAISAJE,10,Erebor,Harad,Gondor

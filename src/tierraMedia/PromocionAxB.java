@@ -1,31 +1,37 @@
 package tierraMedia;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class PromocionAxB extends Promocion {
 
 	private int costoPromocion;
 
-	public PromocionAxB(TipoAtraccion tipoPromocion, ArrayList<Atraccion> atraccionesDeLaPromocion) {
-		super(tipoPromocion, atraccionesDeLaPromocion);
+	public PromocionAxB(String nombre, TipoAtraccion tipoPromocion, ArrayList<Atraccion> atraccionesDeLaPromocion) {
+		super(nombre, tipoPromocion, atraccionesDeLaPromocion);
 		this.costoPromocion = this.calcularCostoPromocion();
 	}
 
 	public int calcularCostoPromocion() {
-		int ultimaCoordenada = super.getAtraccionesPromocion().size() - 1;
-		Atraccion ultimaAtraccion = super.getAtraccionesPromocion().get(ultimaCoordenada);
-		return (int) (super.getCostoTotalSinDescuento() - ultimaAtraccion.getCosto());
+		ArrayList<Atraccion> atracciones = super.getAtraccionesPromocion();
+		Collections.sort(atracciones);
+		Integer descuento = atracciones.get(0).getCosto();
+		return super.getCostoTotalSinDescuento() - descuento;
 	}
 
+	/*
+	 * Devuelve el costo de la Promocion y lo convierte a tipo Integer para poder
+	 * comparar luego.
+	 */
 	@Override
 	public Integer getCosto() {
 		return this.costoPromocion;
 	}
 
+	/* Devuelve en formato String los datos de la Promocion. */
 	public String getDatos() {
-		return "Pack " + super.getTipo() + "\nAtracciones incluidas: " + super.getAtraccionesPromocion()
-				+ "\nTiempo de duración: " + super.getDuracion() + " horas" + "\nCosto sin descuento: "
-				+ super.getCostoTotalSinDescuento() + " monedas de oro" + "\nCosto final: " + this.getCosto()
-				+ " monedas de oro";
+		return super.getNombre() + "\nTipo: " + super.getTipo() + "\nAtracciones incluidas: "
+				+ super.getNombreAtracciones() + "\nCosto: " + this.getCosto() + " monedas de oro" + "\nDuración: "
+				+ super.getDuracion() + " horas";
 	}
 }

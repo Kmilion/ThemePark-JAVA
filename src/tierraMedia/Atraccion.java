@@ -27,12 +27,18 @@ public class Atraccion implements Sugerencia, Comparable<Atraccion> {
 		return nombre;
 	}
 
-	/* Devuelve el costo de la Atraccion. */
+	/*
+	 * Devuelve el costo de la Atraccion y lo convierte a tipo Integer para poder
+	 * comparar luego.
+	 */
 	public Integer getCosto() {
 		return costo;
 	}
 
-	/* Devuelve la duracion de la Atraccion. */
+	/*
+	 * Devuelve la duracion de la Atraccion y la convierte a tipo Double para poder
+	 * comparar luego.
+	 */
 	public Double getDuracion() {
 		return duracion;
 	}
@@ -106,7 +112,6 @@ public class Atraccion implements Sugerencia, Comparable<Atraccion> {
 	/* Devuelve los datos de la Atraccion en formato String. */
 	public String getDatos() {
 		return "Nombre: " + nombre + "\nTipo: " + tipo + "\nCosto: " + costo + " monedas de oro" + "\nDuración: "
-				+ duracion + " horas" + "\nCupo: " + cupo;
+				+ duracion + " horas";
 	}
-
 }
