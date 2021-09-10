@@ -1,3 +1,3 @@
-Lomas del Silencio,PAISAJE,10,Minas Tirith,Gondor,Erebor
-Valles Secos,PAISAJE,12,Abismo de Helm,Harad
-Colina Mortal,AVENTURA,5,Mordor,Bosque Negro,Moria
+Lomas del Silencio,PAISAJE,40,Minas Tirith,Gondor,Erebor
+Valles Secos,PAISAJE,43,Abismo de Helm,Harad
+Colina Mortal,AVENTURA,33,Mordor,Bosque Negro,Moria

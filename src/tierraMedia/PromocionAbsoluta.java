@@ -4,26 +4,19 @@ import java.util.ArrayList;
 
 public class PromocionAbsoluta extends Promocion {
 
-	private int descuento;
 	private int costoPromocion;
 
 	public PromocionAbsoluta(String nombre, TipoAtraccion tipoPromocion, ArrayList<Atraccion> atraccionesDeLaPromocion,
-			int descuento) {
+			int precio) {
 		super(nombre, tipoPromocion, atraccionesDeLaPromocion);
-		setDescuento(descuento);
-		this.costoPromocion = this.calcularCostoPromocion();
-	}
-
-	/* Devuelve el descuento neto que uso para armar la Promocion Absoluta. */
-	public int getDescuento() {
-		return this.descuento;
+		setCosto(precio);
 	}
 
 	/*
 	 * Devuelve true si el descuento neto es menor que el costo total sin descuento
 	 * de las atracciones incluidas en la Promocion.
 	 */
-	public boolean descuentoCorrecto(double valor) {
+	public boolean precioCorrecto(double valor) {
 		return valor < super.getCostoTotalSinDescuento();
 	}
 
@@ -31,16 +24,16 @@ public class PromocionAbsoluta extends Promocion {
 	 * Setea el valor del descuento neto siempre que se cumpla la condicion
 	 * descuentoCorrecto()
 	 */
-	public void setDescuento(int valor) {
-		if (descuentoCorrecto(valor)) {
-			this.descuento = valor;
+	public void setCosto(int valor) {
+		if (precioCorrecto(valor)) {
+			this.costoPromocion = valor;
 		}
 	}
 
 	/* Calcula el costo de la Promocion con el descuento aplicado. */
 	@Override
 	public int calcularCostoPromocion() {
-		return Math.round(super.getCostoTotalSinDescuento() - this.getDescuento());
+		return this.costoPromocion;
 	}
 
 	/*

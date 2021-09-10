@@ -122,7 +122,7 @@ public class Tester {
 				}
 				String nombrePromocion = datos.get(0);
 				TipoAtraccion tipoPromocion = TipoAtraccion.valueOf(datos.get(1));
-				Integer descuentoNeto = Integer.parseInt(datos.get(2));
+				Integer precio = Integer.parseInt(datos.get(2));
 				ArrayList<Atraccion> atraccionesPromo = new ArrayList<Atraccion>();
 				for (int i = 3; i < datos.size(); i++) {
 					for (Atraccion s : atracciones) {
@@ -132,7 +132,7 @@ public class Tester {
 					}
 				}
 				Promocion promocion = new PromocionAbsoluta(nombrePromocion, tipoPromocion, atraccionesPromo,
-						descuentoNeto);
+						precio);
 				promocionesAbsolutas.add(promocion);
 			}
 		} catch (FileNotFoundException e) {
