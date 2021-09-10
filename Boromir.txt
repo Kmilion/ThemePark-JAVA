@@ -1,6 +1,0 @@
-*******Resumen de compra*******
-
-Nombre: Boromir
-Atracciones adquiridas: Mordor, Lothlorien
-Precio final: 60 monedas de oro
-Tiempo aproximado: 4.0 horas

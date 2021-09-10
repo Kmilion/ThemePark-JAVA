@@ -1,6 +1,0 @@
-*******Resumen de compra*******
-
-Nombre: Frodo
-Atracciones adquiridas: Mordor, Montanias Blancas, Lothlorien
-Precio final: 80 monedas de oro
-Tiempo aproximado: 8.0 horas
